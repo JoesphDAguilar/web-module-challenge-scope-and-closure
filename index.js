@@ -89,7 +89,7 @@ Use the finalScore function below to do the following:
 }
 */
 
-function finalScore(inning, numOfInning) {
+function finalScore(inning, numOfInnings) {
   let homeScore = homeScore + inning();
   let awayScore = awayScore + inning();
   return {
@@ -151,9 +151,26 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, numOfInnings) {
+  let homeScore = inning();
+  let awayScore = inning();
+  let homeFinal = 0
+  let awayFinal = 0
+  const score = [];
+  
+  for(let i = 1; i < numOfInnings + 1; i++){
+    homeFinal += homeScore;
+    awayFinal += awayScore;
+    score.push(`Inning ${i}: Away ${awayScore} - Home ${homeScore}`);
+  }
+  if(homeFinal === awayFinal){
+  return score  + ` This game will require extra innings: Away ${awayFinal} - Home ${homeFinal}`;
+  }else {
+  return score + ` Final Score: Away ${awayFinal} - Home ${homeFinal}`;
+  }
 }
+
+console.log(scoreboard(getInningScore, inning, 10))
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
